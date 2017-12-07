@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lson.mapper.RoleModuleMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.lson.model.RoleModule">
+		<result column="role_module_id" property="roleModuleId" />
+		<result column="module_id" property="moduleId" />
+		<result column="role_id" property="roleId" />
+	</resultMap>
+
+</mapper>

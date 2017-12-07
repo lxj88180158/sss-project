@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lson.mapper.ModuleMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.lson.model.Module">
+		<result column="module_id" property="moduleId" />
+		<result column="name" property="name" />
+		<result column="url" property="url" />
+		<result column="father_id" property="fatherId" />
+		<result column="order" property="order" />
+	</resultMap>
+	
+	<sql id="baseField">
+		${tableName}.module_id,${tableName}.name,${tableName}.url,${tableName}.father_id,${tableName}.order
+	</sql>
+	
+	<select id="getModule" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select <include refid="baseField"><property name="tableName" value="u"/></include> 
+		from module u 
+		<where>
+			<if test="top!=null">
+				u.father_id is null
+			</if>
+			<if test="fatherId!=null">
+					u.father_id=#{fatherId}
+			</if>
+			<if test="name!=null">
+				u.name=#{name}
+			</if>
+			<if test="id!=null">
+				and u.moduleId = #{id}
+			</if>
+		</where>
+		order by u.order
+	</select>
+</mapper>
