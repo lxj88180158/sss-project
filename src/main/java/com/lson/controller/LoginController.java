@@ -22,7 +22,7 @@ import com.lson.service.UserService;
 public class LoginController {
 	@Autowired
 	UserService userService;
-	@RequestMapping("/login")
+	@RequestMapping("/login")    
 	public String login(){
 		return "login";
 	}
